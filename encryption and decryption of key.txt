@@ -1,0 +1,25 @@
+def encrypt_message(message, key):
+    encrypted_chars = []
+    for char in message:
+        encrypted_char = chr(ord(char) + key)  # Simple shift of character value
+        encrypted_chars.append(encrypted_char)
+    return ''.join(encrypted_chars)
+
+def decrypt_message(encrypted_message, key):
+    decrypted_chars = []
+    for char in encrypted_message:
+        decrypted_char = chr(ord(char) - key)  # Inverse shift to decrypt
+        decrypted_chars.append(decrypted_char)
+    return ''.join(decrypted_chars)
+
+# Example usage:
+key = 5  # Encryption key
+message = "Hello, this is a secret message!"
+
+# Encrypt the message
+encrypted_message = encrypt_message(message, key)
+print("Encrypted message:", encrypted_message)
+
+# Decrypt the message
+decrypted_message = decrypt_message(encrypted_message, key)
+print("Decrypted message:", decrypted_message)

@@ -1,0 +1,17 @@
+import hmac
+import hashlib
+msg_one ="My name is Mayur"
+key_one ="aabbccddeeff"
+hmac_one =hmac.new(key=key_one.encode() ,msg =msg_one.encode(),digestmod=hashlib.sha256)
+message_digest_one=hmac_one.digest()
+print("{} - Message digest one : {}". format (hmac_one.name , message_digest_one))
+hmac_two =hmac.new(key=key_one.encode() ,digestmod=hashlib.sha256)
+hmac_two.update(bytes(msg_one,encoding="utf-8"))
+message_digest_two=hmac_two.digest()
+print("{} - Message digest Two : {}". format (hmac_two.name , message_digest_two))
+hmac_three =hmac.new(key=key_one.encode() ,digestmod=hashlib.sha256)
+hmac_three.update(bytes("learn",encoding="utf-8"))
+hmac_three.update(bytes("Python",encoding="utf-8"))
+message_digest_three=hmac_three.digest()
+print("{} - Message digest Three : {}". format (hmac_three.name , message_digest_three))
+print("\n Message Digest Size for 1 : {},2: {}, 3 :{}". format(hmac_one.digest_size,hmac_two.digest_size , hmac_three.digest_size))

@@ -1,0 +1,5 @@
+from stegano import lsb
+#secret= lsb.hide ("nature.png","pytho is fun !!")
+#secret.save("new_nature.png")
+ secret_data=lsb.reveal("new_nature.png")
+ print(secret_data)

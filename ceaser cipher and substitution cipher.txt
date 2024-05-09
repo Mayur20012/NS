@@ -1,0 +1,69 @@
+# Function to encrypt using Caesar cipher
+def caesar_encrypt(message, key):
+    encrypted_message = ''
+    for char in message:
+        if char.isalpha():
+            if char.islower():
+                encrypted_message += chr(((ord(char) - 97 + key) % 26) + 97)
+            else:
+                encrypted_message += chr(((ord(char) - 65 + key) % 26) + 65)
+        else:
+            encrypted_message += char
+    return encrypted_message
+
+# Function to decrypt using Caesar cipher
+def caesar_decrypt(encrypted_message, key):
+    decrypted_message = ''
+    for char in encrypted_message:
+        if char.isalpha():
+            if char.islower():
+                decrypted_message += chr(((ord(char) - 97 - key) % 26) + 97)
+            else:
+                decrypted_message += chr(((ord(char) - 65 - key) % 26) + 65)
+        else:
+            decrypted_message += char
+    return decrypted_message
+
+# Function to encrypt using Substitution cipher
+def substitution_encrypt(message, key):
+    encrypted_message = ''
+    alphabet = 'abcdefghijklmnopqrstuvwxyz'
+    for char in message:
+        if char.isalpha():
+            if char.islower():
+                encrypted_message += key[alphabet.index(char)]
+            else:
+                encrypted_message += key[alphabet.index(char.lower())].upper()
+        else:
+            encrypted_message += char
+    return encrypted_message
+
+# Function to decrypt using Substitution cipher
+def substitution_decrypt(encrypted_message, key):
+    decrypted_message = ''
+    alphabet = 'abcdefghijklmnopqrstuvwxyz'
+    for char in encrypted_message:
+        if char.isalpha():
+            if char.islower():
+                decrypted_message += alphabet[key.index(char)]
+            else:
+                decrypted_message += alphabet[key.index(char.lower())].upper()
+        else:
+            decrypted_message += char
+    return decrypted_message
+
+# Example usage for Caesar cipher:
+caesar_key = 3
+caesar_message = "Hello, this is a secret message!"
+caesar_encrypted = caesar_encrypt(caesar_message, caesar_key)
+print("Caesar Encrypted message:", caesar_encrypted)
+caesar_decrypted = caesar_decrypt(caesar_encrypted, caesar_key)
+print("Caesar Decrypted message:", caesar_decrypted)
+
+# Example usage for Substitution cipher:
+substitution_key = "qwertyuioplkjhgfdsazxcvbnm"
+substitution_message = "Hello, this is a secret message!"
+substitution_encrypted = substitution_encrypt(substitution_message, substitution_key)
+print("Substitution Encrypted message:", substitution_encrypted)
+substitution_decrypted = substitution_decrypt(substitution_encrypted, substitution_key)
+print("Substitution Decrypted message:", substitution_decrypted)

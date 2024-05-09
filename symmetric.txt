@@ -1,0 +1,18 @@
+from cryptography.fernet import Fernet
+
+# Generate a key
+key = Fernet.generate_key()
+
+# Instantiate a Fernet symmetric key cipher
+cipher = Fernet(key)
+
+# Message to encrypt
+message = b"Hello, this is a secret message!"
+
+# Encrypt the message
+encrypted_message = cipher.encrypt(message)
+print("Encrypted Message:", encrypted_message)
+
+# Decrypt the message
+decrypted_message = cipher.decrypt(encrypted_message)
+print("Decrypted Message:", decrypted_message.decode())
